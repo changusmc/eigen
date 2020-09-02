@@ -74,6 +74,7 @@ import { ShowArtistsQueryRenderer, ShowArtworksQueryRenderer, ShowMoreInfoQueryR
 import { ShowQueryRenderer } from "./Scenes/Show/Show"
 import { VanityURLEntityRenderer } from "./Scenes/VanityURL/VanityURLEntity"
 
+import { BottomTabType } from "./Scenes/BottomTabs/BottomTabType"
 import { ViewingRoomQueryRenderer } from "./Scenes/ViewingRoom/ViewingRoom"
 import { ViewingRoomArtworkQueryRenderer } from "./Scenes/ViewingRoom/ViewingRoomArtwork"
 import { ViewingRoomArtworksQueryRenderer } from "./Scenes/ViewingRoom/ViewingRoomArtworks"
@@ -324,6 +325,8 @@ interface ReactModuleDescriptor {
   presentModally?: boolean
   fullBleed?: boolean
   Component: React.ComponentType<any>
+  // If this module is the root view of a particular tab, name it here
+  tabName?: BottomTabType
 }
 
 type NativeModuleName =
@@ -386,8 +389,8 @@ export const modules = defineModules({
   FullArtistSeriesList: { Component: ArtistSeriesFullArtistSeriesListQueryRenderer },
   FullFeaturedArtistList: { Component: CollectionFullFeaturedArtistListQueryRenderer },
   Gene: { Component: Gene },
-  Home: { Component: HomeQueryRenderer },
-  Inbox: { Component: Inbox },
+  Home: { Component: HomeQueryRenderer, tabName: "home" },
+  Inbox: { Component: Inbox, tabName: "inbox" },
   Inquiry: { Component: Inquiry },
   LiveAuction: {
     nativeModuleName: "LiveAuction",
@@ -409,7 +412,7 @@ export const modules = defineModules({
   MyCollectionArtworkList: { Component: setupMyCollectionScreen(MyCollectionArtworkList) },
   MyCollectionHome: { Component: setupMyCollectionScreen(MyCollectionHome) },
   MyCollectionMarketingHome: { Component: setupMyCollectionScreen(MyCollectionMarketingHome) },
-  MyProfile: { Component: MyProfileQueryRenderer },
+  MyProfile: { Component: MyProfileQueryRenderer, tabName: "profile" },
   MyProfilePayment: { Component: MyProfilePaymentQueryRenderer },
   MyProfilePaymentNewCreditCard: { Component: MyProfilePaymentNewCreditCard },
   MyProfilePushNotifications: { Component: MyProfilePushNotificationsQueryRenderer },
@@ -417,8 +420,8 @@ export const modules = defineModules({
   Partner: { Component: Partner, fullBleed: true },
   PartnerLocations: { Component: PartnerLocations },
   PrivacyRequest: { Component: PrivacyRequest },
-  Sales: { Component: setupMyCollectionScreen(Consignments) },
-  Search: { Component: SearchWithTracking },
+  Sales: { Component: setupMyCollectionScreen(Consignments), tabName: "sell" },
+  Search: { Component: SearchWithTracking, tabName: "search" },
   SellTabApp: { Component: setupMyCollectionScreen(SellTabApp) },
   Show: { Component: ShowQueryRenderer },
   ShowArtists: { Component: ShowArtists },
