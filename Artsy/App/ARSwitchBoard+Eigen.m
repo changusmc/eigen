@@ -28,14 +28,6 @@
 @implementation ARSwitchBoard (Eigen)
 
 
--(NSURL *)liveAuctionsURL
-{
-    BOOL useStaging = [AROptions boolForOption:ARUseStagingDefault];
-    NSString *echoDomainKey = useStaging ? @"ARLiveAuctionsStagingURLDomain" : @"ARLiveAuctionsURLDomain";
-    NSString *domain = self.echo.routes[echoDomainKey].path;
-    return [NSURL URLWithString:[@"https://" stringByAppendingString:domain]];
-}
-
 #pragma mark - Dev
 
 - (UIViewController *)loadAdminMenu;
@@ -76,11 +68,6 @@
             return [[AuctionViewController alloc] initWithSaleID:saleID];
         }
     }
-}
-
-- (UIViewController *)loadLiveAuction:(NSString *)auctionID
-{
-    return [self loadURL:[self.liveAuctionsURL URLByAppendingPathComponent:auctionID]];
 }
 
 - (UIViewController *)loadAuctionRegistrationWithID:(NSString *)auctionID skipBidFlow:(BOOL)skipBidFlow
