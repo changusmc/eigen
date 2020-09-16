@@ -2,15 +2,16 @@ import { Sale_sale } from "__generated__/Sale_sale.graphql"
 import { SaleQueryRendererQuery } from "__generated__/SaleQueryRendererQuery.graphql"
 import Spinner from "lib/Components/Spinner"
 import { defaultEnvironment } from "lib/relay/createEnvironment"
+import { extractNodes } from "lib/utils/extractNodes"
 import { renderWithPlaceholder } from "lib/utils/renderWithPlaceholder"
 import { Flex } from "palette"
 import React, { useRef } from "react"
 import { Animated } from "react-native"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { extractNodes } from "../../utils/extractNodes"
 import { RegisterToBidButton } from "./Components/RegisterToBidButton"
 import { SaleArtworksRailContainer as SaleArtworksRail } from "./Components/SaleArtworksRail"
 import { SaleHeaderContainer as SaleHeader } from "./Components/SaleHeader"
+import { SaleLotsListContainer as SaleLotsList } from "./Components/SaleLotsList"
 
 interface Props {
   sale: Sale_sale
@@ -40,6 +41,7 @@ const Sale: React.FC<Props> = (props) => {
         <RegisterToBidButton sale={props.sale} />
       </Flex>
       <SaleArtworksRail saleArtworks={saleArtworks} />
+      <SaleLotsList saleArtworks={saleArtworks} />
     </Animated.ScrollView>
   )
 }
@@ -53,6 +55,7 @@ export const SaleContainer = createFragmentContainer(Sale, {
         edges {
           node {
             ...SaleArtworksRail_saleArtworks
+            ...SaleLotsList_saleArtworks
           }
         }
       }
