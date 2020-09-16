@@ -113,7 +113,7 @@ function getDomainMap(): Record<string, RouteMatcher[] | null> {
     new RouteMatcher("/conditions-of-sale", "WebView"), // remember present_modally
     new RouteMatcher("/artwork-classifications", "ArtworkAttributionClassFAQ"),
 
-    new RouteMatcher("/partner-locations/:id", "PartnerLocations"),
+    new RouteMatcher("/partner-locations/:partnerID", "PartnerLocations"),
 
     new RouteMatcher("/fair/:id/artworks", "FairArtworks"),
     new RouteMatcher("/fair/:id/artists", "FairArtists"),
