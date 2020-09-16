@@ -15,6 +15,7 @@ upcoming:
     - Change IDFA for AppStoreConnect to false - pavlos
     - Add download option for non-preview-able conversation attachments - sepand
     - Support switching between environments on login screen - ash, brian, david, mounir, pavlos
+    - Move auction CTA button to RN - pavlos
   user_facing:
     - Fix shows save button - mounir
     - Add colored indicator dot and adjusted messaging for artwork availability - lily
@@ -24,6 +25,8 @@ upcoming:
     - Adds new inquiry buttons and modal behind lab option - lily
     - Fix new works for you rail sorting- mounir
     - Fix missing date issue on auctions rail at home - mounir
+    - Fix navigation bug on Artwork consign button - david
+    - Add auction lots rail to the auctions screen - mounir
 
 releases:
   - version: 6.6.2
