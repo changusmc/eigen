@@ -119,11 +119,6 @@ static ARSwitchBoard *sharedInstance = nil;
         return [sself loadBidUIForArtwork:parameters[@"artwork_id"] inSale:parameters[@"id"]];
     }];
 
-    [self.routes addRoute:@"/city-bmw-list/:id" handler:JLRouteParams {
-        return [[ARCityBMWListComponentViewController alloc] initWithCitySlug:parameters[@"id"]];
-    }];
-
-
     // The menu items' paths are added in ARTopMenuViewController
 }
 
